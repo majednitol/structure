@@ -5,14 +5,17 @@ struct Node {
     struct Node *next;
 };
 
-int searchElement(struct Node *head, int element){
-    int index= 1;
-    while (head!=NULL){
-        if (head->data==element){
-            return index;  
+int searchElement(struct Node*head, int element){
+    int index=1;
+    while (head!= NULL)
+    {
+        if (head->data==element)
+        {
+            return index;
         }
         index++;
-        head=head->next;
+        head = head->next;
+        
     }
     return -1;
     
@@ -48,5 +51,5 @@ int main(){
     int a[]={1,2,30,4,5};
     struct Node*head;
     head= linkList(a,5);
-    printf("index %d",searchElement(head,300));
+    printf("index %d",searchElement(head,30));
 }
