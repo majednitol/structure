@@ -8,8 +8,7 @@ struct Node
 
 void print(struct Node *head);
 void countNode(struct Node *head);
-struct Node *delete (struct Node *head, int data);
-int searchElement(struct Node *head, int element);
+struct Node *delete (struct Node *head, int position);
 
 struct Node *linkList(int a[], int size)
 {
@@ -35,32 +34,10 @@ struct Node *linkList(int a[], int size)
     return head;
 }
 
-void addNodeBegining(struct Node *head, int data)
-{
-    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
-    temp->data = data;
-    temp->next = head;
-    struct Node *newhead = temp;
-    print(newhead);
-}
-
-void addNodeEndding(struct Node *head, int data)
-{
-    struct Node *current = head;
-    while (current->next != NULL)
-    {
-        current = current->next;
-    }
-    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
-    temp->data = data;
-    temp->next = NULL;
-    current->next = temp;
-    print(head);
-}
 void insertNodeMiddle(struct Node *head, int position, int value)
 {
     struct Node *temp = head;
-    int count = 0;
+    int count = 1;
     while (temp != NULL)
     {
         count++;
@@ -81,23 +58,23 @@ int main()
     int a[6] = {1, 2, 3, 4, 5, 6};
     struct Node *head;
     head = linkList(a, 6);
-    print(head);
-    addNodeBegining(head, 600);
-    addNodeEndding(head, 40);
-    insertNodeMiddle(head, 3, 80);
-    delete (head, 5);
-    printf("index %d\n", searchElement(head, 6));
+
     countNode(head);
+    delete (head, 3);
+    insertNodeMiddle(head, 3, 80);
 }
 
-struct Node *delete (struct Node *head, int data)
+struct Node *delete (struct Node *head, int position)
 {
     struct Node *dummyhead = (struct Node *)malloc(sizeof(struct Node));
     dummyhead->next = head;
     struct Node *temp = dummyhead;
+    int count = 0;
+
     while (temp->next != NULL)
     {
-        if (temp->next->data == data)
+        count++;
+        if (position == count)
         {
             temp->next = temp->next->next;
         }
@@ -109,20 +86,6 @@ struct Node *delete (struct Node *head, int data)
     print(dummyhead->next);
 }
 
-int searchElement(struct Node *head, int element)
-{
-    int index = 1;
-    while (head != NULL)
-    {
-        if (head->data == element)
-        {
-            return index;
-        }
-        index++;
-        head = head->next;
-    }
-    return -1;
-}
 void countNode(struct Node *head)
 {
     struct Node *temp = head;
@@ -132,6 +95,7 @@ void countNode(struct Node *head)
         temp = temp->next;
         count++;
     }
+
     printf("total number of nodes: %d\n", count);
     print(head);
 }

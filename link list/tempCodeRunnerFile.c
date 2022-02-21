@@ -1,2 +1,1 @@
-
-            newNode->data = value;
+struct Node *head,

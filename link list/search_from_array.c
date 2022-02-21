@@ -38,7 +38,7 @@ struct Node *linkList(int a[], int size)
         else
         {
             current->next = temp;
-            current = current->next = temp;
+            current = current->next ;
         }
     }
     return head;

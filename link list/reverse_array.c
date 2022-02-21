@@ -6,6 +6,7 @@ struct Node
     int data;
     struct Node *next;
 };
+void print(struct Node *head);
 void reverseArrayLinkList(struct Node *head);
 struct Node *linkList(int a[], int size)
 {
@@ -30,23 +31,17 @@ struct Node *linkList(int a[], int size)
     return head;
 }
 
-
-
 int main()
 {
-    int a[] = {1, 2, 3,6};
+    int a[] = {1, 2, 3, 6};
 
     struct Node *head = NULL;
 
     head = linkList(a, 4);
     struct Node *newhead = head;
-    while (head != NULL)
-    {
-        printf("%d-> ", head->data);
-        head = head->next;
-    }
-    printf("NULL\n");
-    reverseArrayLinkList(newhead);
+
+    print(head);
+    reverseArrayLinkList(head);
     return 0;
 }
 
@@ -60,11 +55,18 @@ void reverseArrayLinkList(struct Node *head)
         prev = current;
         current = next;
     }
+
     head = prev;
-    while (head != NULL)
+    print(head);
+}
+
+void print(struct Node *head)
+{
+    struct Node *current = head;
+    while (current != NULL)
     {
-        printf("%d-> ", head->data);
-        head = head->next;
+        printf("%d-> ", current->data);
+        current = current->next;
     }
     printf("NULL\n");
 }
