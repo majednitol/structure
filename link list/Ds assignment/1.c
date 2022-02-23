@@ -41,7 +41,8 @@ void addNodeEndding(struct Node *head, int data)
     {
         current = current->next;
     }
-    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *temp =(struct Node *)malloc(sizeof(struct Node));
+    
     temp->data = data;
     temp->next = NULL;
     current->next = temp;
