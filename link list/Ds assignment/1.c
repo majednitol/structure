@@ -34,20 +34,7 @@ struct Node *linkList(int a[], int size)
     return head;
 }
 
-void addNodeEndding(struct Node *head, int data)
-{
-    struct Node *current = head;
-    while (current->next != NULL)
-    {
-        current = current->next;
-    }
-    struct Node *temp =(struct Node *)malloc(sizeof(struct Node));
-    
-    temp->data = data;
-    temp->next = NULL;
-    current->next = temp;
-    print(head);
-}
+
 
 int main()
 {
@@ -56,7 +43,7 @@ int main()
     head = linkList(a, 6);
     
 
-    addNodeEndding(head,30);
+    
 
     countNode(head);
 }
@@ -93,9 +80,9 @@ void countNode(struct Node *head)
         count++;
     }
 
-    int position = (count % 2 == 0) ? (count / 2) : ((count + 1) / 2);
+    
 
-    delete (head, position);
+    delete (head, 1);
     count--;
     printf("total number of nodes: %d\n", count);
     print(head);
