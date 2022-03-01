@@ -53,7 +53,7 @@ struct Node *delete (struct Node *head, int position)
     struct Node *dummyhead = (struct Node *)malloc(sizeof(struct Node));
     dummyhead->next = head;
     struct Node *temp = dummyhead;
-    int count = 0;
+    int count = 1;
 
     while (temp->next != NULL)
     {
@@ -70,23 +70,6 @@ struct Node *delete (struct Node *head, int position)
     print(dummyhead->next);
 }
 
-void countNode(struct Node *head)
-{
-    struct Node *temp = head;
-    int count = 0;
-    while (temp != NULL)
-    {
-        temp = temp->next;
-        count++;
-    }
-
-    
-
-    delete (head, 1);
-    count--;
-    printf("total number of nodes: %d\n", count);
-    print(head);
-}
 
 void print(struct Node *head)
 {

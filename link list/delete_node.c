@@ -7,8 +7,9 @@ struct Node
     struct Node *next;
 };
 void print(struct Node *head);
-struct Node *deleteByData (struct Node *head, int data);
-struct Node *deleteByPostition (struct Node *head, int position);
+void midpositionDelete(struct Node *head);
+struct Node *deleteByData(struct Node *head, int data);
+struct Node *deleteByPostition(struct Node *head, int position);
 
 struct Node *linkList(int a[], int size)
 {
@@ -40,8 +41,8 @@ int main()
     struct Node *head;
     head = linkList(a, 5);
     print(head);
-    deleteByData (head, 24);
-    deleteByPostition(head,5);
+    deleteByData(head, 24);
+    midpositionDelete(head);
 }
 
 void print(struct Node *head)
@@ -55,7 +56,7 @@ void print(struct Node *head)
 }
 
 // deletting data by data
-struct Node *deleteByData (struct Node *head, int data)
+struct Node *deleteByData(struct Node *head, int data)
 {
     struct Node *dummyhead = (struct Node *)malloc(sizeof(struct Node));
     dummyhead->next = head;
@@ -74,7 +75,7 @@ struct Node *deleteByData (struct Node *head, int data)
     print(dummyhead->next);
 }
 // deletting data by position
-struct Node *deleteByPostition (struct Node *head, int position)
+struct Node *deleteByPostition(struct Node *head, int position)
 {
     struct Node *dummyhead = (struct Node *)malloc(sizeof(struct Node));
     dummyhead->next = head;
@@ -94,4 +95,20 @@ struct Node *deleteByPostition (struct Node *head, int position)
         }
     }
     print(dummyhead->next);
+}
+// for mid position 
+// 
+void midpositionDelete(struct Node *head)
+{
+    struct Node *temp = head;
+    int count = 1;
+    while (temp != NULL)
+    {
+        temp = temp->next;
+        count++;
+    }
+
+    int position = (count % 2 == 0) ? (count / 2) : ((count + 1) / 2);
+
+    deleteByPostition(head, position);
 }

@@ -54,7 +54,8 @@ void addNodeEndding(struct Node *head, int data)
     current->next = temp;
     print(head);
 }
-void insertNodeMiddle(struct Node *head, int position, int value)
+// jekono position
+void n_position(struct Node *head, int position, int value)
 {
     struct Node *temp = head;
     int count = 1;
@@ -83,6 +84,22 @@ void insertNodeMiddle(struct Node *head, int position, int value)
         print(head);
     }
 }
+// for mid position
+void midposition(struct Node *head)
+{
+    struct Node *temp = head;
+    int count = 1;
+    while (temp != NULL)
+    {
+        temp = temp->next;
+        count++;
+    }
+
+    int position = (count % 2 == 0) ? (count / 2) : ((count + 1) / 2);
+
+   n_position (head, position, 800);
+}
+
 
 int main()
 {
@@ -92,7 +109,8 @@ int main()
     print(head);
     // addNodeBegining(head, 20);
     // addNodeEndding(head, 40);
-    insertNodeMiddle(head, 6, 80);
+  n_position(head, 6, 80);
+  midposition(head);
 }
 
 void print(struct Node *head)
