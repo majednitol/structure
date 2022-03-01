@@ -7,7 +7,8 @@ struct Node
     struct Node *next;
 };
 void print(struct Node *head);
-struct Node *delete (struct Node *head, int data);
+struct Node *deleteByData (struct Node *head, int data);
+struct Node *deleteByPostition (struct Node *head, int position);
 
 struct Node *linkList(int a[], int size)
 {
@@ -34,12 +35,13 @@ struct Node *linkList(int a[], int size)
 
 int main()
 {
-    int a[] = {1, 2, 3, 4, 5};
+    int a[] = {14, 24, 38, 40, 52};
 
     struct Node *head;
     head = linkList(a, 5);
     print(head);
-    delete (head, 4);
+    deleteByData (head, 24);
+    deleteByPostition(head,5);
 }
 
 void print(struct Node *head)
@@ -51,7 +53,9 @@ void print(struct Node *head)
     }
     printf("NULL\n");
 }
-struct Node *delete (struct Node *head, int data)
+
+// deletting data by data
+struct Node *deleteByData (struct Node *head, int data)
 {
     struct Node *dummyhead = (struct Node *)malloc(sizeof(struct Node));
     dummyhead->next = head;
@@ -59,6 +63,28 @@ struct Node *delete (struct Node *head, int data)
     while (temp->next != NULL)
     {
         if (temp->next->data == data)
+        {
+            temp->next = temp->next->next;
+        }
+        else
+        {
+            temp = temp->next;
+        }
+    }
+    print(dummyhead->next);
+}
+// deletting data by position
+struct Node *deleteByPostition (struct Node *head, int position)
+{
+    struct Node *dummyhead = (struct Node *)malloc(sizeof(struct Node));
+    dummyhead->next = head;
+    struct Node *temp = dummyhead;
+    int count = 1;
+
+    while (temp->next != NULL)
+    {
+        count++;
+        if (position == count)
         {
             temp->next = temp->next->next;
         }

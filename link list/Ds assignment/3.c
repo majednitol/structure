@@ -60,8 +60,8 @@ int main()
     head = linkList(a, 6);
 
     countNode(head);
-    delete (head, 3);
-    insertNodeMiddle(head, 3, 80);
+    delete (head, 1);
+    // insertNodeMiddle(head, 3, 80);
 }
 
 struct Node *delete (struct Node *head, int position)
