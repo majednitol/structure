@@ -57,22 +57,31 @@ void addNodeEndding(struct Node *head, int data)
 void insertNodeMiddle(struct Node *head, int position, int value)
 {
     struct Node *temp = head;
-    int count= 0;
-    while (temp!= NULL)
+    int count = 1;
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    newNode->data = value;
+    if (count = 1 && position == 1)
     {
-        count++;
-        if (count == position)
-        {
-            struct Node *newNode= (struct Node *)malloc(sizeof(struct Node));
-            newNode->data = value;
-            newNode->next = temp->next;
-            temp->next = newNode;
-        }
-        temp = temp->next;
-        
+
+        temp->next = head;
+        struct Node *newhead = newNode;
+        print(newhead);
     }
-    print(head);
-    
+    else
+    {
+        while (temp != NULL)
+        {
+            count++;
+            if (count == position)
+            {
+
+                newNode->next = temp->next;
+                temp->next = newNode;
+            }
+            temp = temp->next;
+        }
+        print(head);
+    }
 }
 
 int main()
@@ -81,9 +90,9 @@ int main()
     struct Node *head;
     head = linkList(a, 6);
     print(head);
-    addNodeBegining(head, 20);
-    addNodeEndding(head, 40);
-    insertNodeMiddle(head, 3, 80);
+    // addNodeBegining(head, 20);
+    // addNodeEndding(head, 40);
+    insertNodeMiddle(head, 6, 80);
 }
 
 void print(struct Node *head)
