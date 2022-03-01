@@ -63,7 +63,7 @@ struct Node *deleteByData(struct Node *head, int data)
     struct Node *temp = dummyhead;
     while (temp->next != NULL)
     {
-        if (temp->next->data == data)
+            if (temp->next->data == data)
         {
             temp->next = temp->next->next;
         }

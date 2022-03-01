@@ -1,1 +1,1 @@
-struct Node *head,
+last = temp;

@@ -97,9 +97,8 @@ void midposition(struct Node *head)
 
     int position = (count % 2 == 0) ? (count / 2) : ((count + 1) / 2);
 
-   n_position (head, position, 800);
+    n_position(head, position, 800);
 }
-
 
 int main()
 {
@@ -109,8 +108,8 @@ int main()
     print(head);
     // addNodeBegining(head, 20);
     // addNodeEndding(head, 40);
-  n_position(head, 6, 80);
-  midposition(head);
+    n_position(head, 6, 80);
+    midposition(head);
 }
 
 void print(struct Node *head)
