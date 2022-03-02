@@ -1,1 +1,2 @@
-last = temp;
+
+    deleteByData(head, 24);

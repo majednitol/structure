@@ -52,14 +52,14 @@ void addNodeEndding(struct Node *head, int data)
     temp->data = data;
     temp->prev = NULL;
     current->prev = temp;
-    print(head);
+    
 }
 int main()
 {
     int a[6] = {1, 2, 3, 4, 5, 6};
     struct Node *head;
     head = linkList(a, 6);
-    addNodeEndding(head, 40);
+    addNodeEndding(head, 4000);
     print(head);
 }
 void print(struct Node *head)
