@@ -89,12 +89,12 @@ int main()
     struct node *tail;
     tail = addtoempty(45);
 
-    tail = addNodeBegining(tail, 34);
-    tail = addNodeBegining(tail, 384);
-    tail = addNodeAtEnd(tail, 340);
-    tail = addNodeAtEnd(tail, 348);
+    // tail = addNodeBegining(tail, 34);
+    // tail = addNodeBegining(tail, 384);
+    // tail = addNodeAtEnd(tail, 340);
+    // tail = addNodeAtEnd(tail, 348);
     // tail = addAfterPos(tail, 38, 4);
-    // tail = createlist(tail);
+    tail = createlist(tail);
 
     print(tail);
 }

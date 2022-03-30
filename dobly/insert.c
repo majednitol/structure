@@ -48,6 +48,7 @@ struct node *addAtEnd(struct node *head, int data)
         temp->prev = tp;
         return head;
     }
+    
 }
 struct node *addAfterPos(struct node *head, int data, int pos)
 {
@@ -77,19 +78,47 @@ struct node *addAfterPos(struct node *head, int data, int pos)
 
     return head;
 }
-int main()
+
+struct node *createlist(struct node *head)
 {
-    struct node *head = NULL, *ptr;
-    head = addToEmptyNode(head, 30);
-    // head = addAtBeginning(head, 98);
-    // head = addAtEnd(head, 980);
-    head = addAfterPos(head, 45, 2);
-    ptr = head;
+    int i, n, data;
+    printf("Enter the number of nodes of the list: ");
+    scanf("%d", &n);
+    if (n == 0)
+
+        return head;
+
+    printf("Enter the element 1: ");
+    scanf("%d", &data);
+    head = addToEmptyNode(head, data);
+    for (i = 1; i < n; i++)
+    {
+        printf("Enter the element %d: ", i + 1);
+        scanf("%d", &data);
+        head = addAtEnd(head, data);
+    }
+    return head;
+}
+
+void print(struct node *head)
+{
+    struct node *ptr = head;
     while (ptr != NULL)
     {
         printf(" %d ->", ptr->data);
         ptr = ptr->next;
     }
+    
+}
+int main()
+{
+    struct node *head = NULL, *ptr;
+    head = addToEmptyNode(head, 30);
+    head = addAtBeginning(head, 98);
+    head = addAtEnd(head, 80);
+    head = addAfterPos(head, 90, 2);
+    // head = createlist(head);
+    print(head);
 
     return 0;
 }
