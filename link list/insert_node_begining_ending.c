@@ -16,7 +16,7 @@ struct Node *linkList(int a[], int size)
     {
         temp = (struct Node *)malloc(sizeof(struct Node));
         temp->data = a[i];
-        temp->next = NULL;
+        temp->next = head;
         if (head == NULL)
         {
             head = temp;
@@ -25,6 +25,7 @@ struct Node *linkList(int a[], int size)
         else
         {
             current->next = temp;
+
             current = current->next;
         }
     }
@@ -106,10 +107,11 @@ int main()
     struct Node *head;
     head = linkList(a, 6);
     print(head);
-    // addNodeBegining(head, 20);
-    // addNodeEndding(head, 40);
-    n_position(head, 6, 80);
+    addNodeBegining(head, 20);
+    addNodeEndding(head, 40);
+    n_position(head, 7, 80);
     midposition(head);
+    print(head);
 }
 
 void print(struct Node *head)

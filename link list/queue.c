@@ -44,8 +44,6 @@ int dequeue()
     font = (font + 1) % CAPACITY;
     totalItem--;
     return frontItem;
-
-    return 0;
 }
 void print()
 {
@@ -58,12 +56,13 @@ void print()
 }
 int main()
 {
+    enqueue(250);
     enqueue(20);
-    enqueue(20);
-    enqueue(20);
-    enqueue(20);
+    enqueue(206);
+    enqueue(209);
+    enqueue(209);
+    enqueue(2098);
     print();
-    dequeue();
     print();
     return 0;
 }

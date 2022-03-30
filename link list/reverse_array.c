@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 struct Node
@@ -7,16 +6,17 @@ struct Node
     struct Node *next;
 };
 void print(struct Node *head);
-void reverseArrayLinkList(struct Node *head);
-struct Node *linkList(int a[], int size)
+struct Node *arrayList(int a[], int size)
 {
+
     struct Node *head = NULL, *temp = NULL, *current = NULL;
     int i;
     for (i = 0; i < size; i++)
     {
         temp = (struct Node *)malloc(sizeof(struct Node));
         temp->data = a[i];
-        temp->next = NULL;
+        temp->next = head;
+
         if (head == NULL)
         {
             head = temp;
@@ -30,43 +30,44 @@ struct Node *linkList(int a[], int size)
     }
     return head;
 }
+// struct Node *deleteByData(struct Node *head, int data)
+// {
+//     struct Node *dummyhead = (struct Node *)malloc(sizeof(struct Node));
+//     dummyhead->next = head;
+//     struct Node *temp = dummyhead;
+//     while (temp->next != NULL)
+//     {
+//             if (temp->next->data == data)
+//         {
+//             temp->next = temp->next->next;
+//         }
+//         else
+//         {
+//             temp = temp->next;
+//         }
+//     }
+//     print(dummyhead->next);
+// }
+
 
 int main()
 {
-    int a[] = {1, 2, 3, 6};
+    int a[] = {0, 1, 2, 5, 8};
+    struct Node *head;
+    head = arrayList(a, 5);
+    deleteByData(head, 5);
 
-    struct Node *head = NULL;
-
-    head = linkList(a, 4);
-    struct Node *newhead = head;
-
-    print(head);
-    reverseArrayLinkList(head);
-    return 0;
-}
-
-void reverseArrayLinkList(struct Node *head)
-{
-    struct Node *prev = NULL, *current = head, *next = NULL;
-    while (current != NULL)
-    {
-        next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
-    }
-
-    head = prev;
     print(head);
 }
 
-void print(struct Node *head)
-{
-    struct Node *current = head;
-    while (current != NULL)
+void print(struct Node *head){
+     struct Node *current = head;
+    do
     {
-        printf("%d-> ", current->data);
+        printf("%d ->", current->data);
         current = current->next;
-    }
+
+    } while (current != head);
+
     printf("NULL\n");
 }

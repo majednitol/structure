@@ -1,74 +1,135 @@
+
+
 #include <stdio.h>
 #include <stdlib.h>
-struct Node
-{
+
+
+struct node {
     int data;
-    struct Node *next;
-    struct Node *prev;
-};
-void print(struct Node *head);
+    struct node * prev;
+    struct node * next;
+}*head, *last;
 
-struct Node *linkList(int a[], int size)
-{
-    int i;
 
-    struct Node *head = NULL, *temp = NULL, *last = NULL, *current = NULL;
 
-    for (i = 0; i < size; i++)
-    {
+void createList(int n);
+void displayListFromFirst();
+void displayListFromEnd();
 
-        temp = (struct Node *)malloc(sizeof(struct Node));
-        temp->data = a[i];
-        temp->prev = NULL;
-        temp->next = NULL;
 
-        if (head == NULL)
-        {
-
-            head = temp;
-            current = temp;
-            last = temp;
-        }
-        else
-        {
-            current->next = temp;
-           current= current->next;
-            current->prev = last;
-            last = temp;
-        }
-    }
-
-    return head,last;
-}
-
-void addNodeEndding(struct Node *head, int data)
-{
-    struct Node *current = head;
-    while (current->prev != NULL)
-    {
-        current = current->prev;
-    }
-    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
-    temp->data = data;
-    temp->prev = NULL;
-    current->prev = temp;
-    
-}
 int main()
 {
-    int a[6] = {1, 2, 3, 4, 5, 6};
-    struct Node *head;
-    head = linkList(a, 6);
-    addNodeEndding(head, 4000);
-    print(head);
+    int n, choice;
+
+    head = NULL;
+    last = NULL;
+    
+    
+
+
+
+    return 0;
 }
-void print(struct Node *head)
+
+
+void createList(int a[],int size)
 {
-    struct Node *current = head;
-    while (current != NULL)
-    {
-        printf("%d-> ", current->data);
-        current = current->prev;
+    
+
+    
+        head = (struct node *)malloc(sizeof(struct node));
+
+        if(head != NULL)
+        {
+           
+
+            head->data = data;
+            head->prev = NULL;
+            head->next = NULL;
+
+            last = head;
+
+            for(i=2; i<=size; i++)
+            {
+                newNode = (struct node *)malloc(sizeof(struct node));
+
+                if(newNode != NULL)
+                {
+                    printf("Enter data of %d node: ", i);
+                    scanf("%d", &data);
+
+                    newNode->data = data;
+                    newNode->prev = last; // Link new node with the previous node
+                    newNode->next = NULL;
+
+                    last->next = newNode; 
+                    last = newNode;          
+                }
+               
+            }
+
+            
+        }
+        
     }
-    printf("NULL\n");
+
+
+
+/**
+ * Displays the content of the list from beginning to end
+ */
+void displayListFromFirst()
+{
+    struct node * temp;
+    int n = 1;
+
+    if(head == NULL)
+    {
+        printf("List is empty.");
+    }
+    else
+    {
+        temp = head;
+        printf("\n\nDATA IN THE LIST:\n");
+
+        while(temp != NULL)
+        {
+            printf("DATA of %d node = %d\n", n, temp->data);
+
+            n++;
+            
+            /* Move the current pointer to next node */
+            temp = temp->next;
+        }
+    }
+}
+
+
+/**
+ * Display the content of the list from last to first
+ */
+void displayListFromEnd()
+{
+    struct node * temp;
+    int n = 0;
+
+    if(last == NULL)
+    {
+        printf("List is empty.");
+    }
+    else
+    {
+        temp = last;
+        printf("\n\nDATA IN THE LIST:\n");
+
+        while(temp != NULL)
+        {
+            printf("DATA of last-%d node = %d\n", n, temp->data);
+
+            n++;
+            
+            /* Move the current pointer to previous node */
+            temp = temp->prev; 
+        }
+    }
 }
