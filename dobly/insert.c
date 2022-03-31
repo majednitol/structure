@@ -68,7 +68,7 @@ struct node *addAfterPos(struct node *head, int data, int pos)
     }
     else
     {
-      
+
         temp->next = newp;
         temp2->prev = newp;
         newp->next = temp2;
@@ -99,6 +99,60 @@ struct node *createlist(struct node *head)
     return head;
 }
 
+struct node *delFirst(struct node *head)
+{
+
+    head = head->next;
+    free(head->prev);
+    head->prev = NULL;
+}
+
+struct node *delLast(struct node *head)
+{
+    struct node *temp = head;
+    struct node *temp2;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    temp2 = temp->prev;
+    temp2->next = NULL;
+    free(temp);
+    return head;
+}
+
+struct node *delInter(struct node *head,int position){
+    struct node *temp = head;
+    struct node *temp2 = NULL;
+    if (position==1)
+    {
+        head = delFirst(head);
+        return head;
+    }
+    while (position >1)
+    {
+        temp= temp->next;
+        position--;
+    }
+    if (temp->next == NULL)
+    {
+        head = delLast(head);
+
+    }
+    else
+    {
+        temp2= temp->prev;
+        temp2->next= temp->next;
+        temp->next->prev = temp2;
+        free(temp);
+        temp= NULL;
+    }
+    return head;
+    
+    
+}
+
 void print(struct node *head)
 {
     struct node *ptr = head;
@@ -115,6 +169,11 @@ int main()
     head = addAtBeginning(head, 98);
     head = addAtEnd(head, 80);
     head = addAfterPos(head, 90, 2);
+    print(head);
+    printf("\nafter deletion \n");
+    // head = delFirst(head);
+    // head = delLast(head);
+    head = delInter(head, 2);
     // head = createlist(head);
     print(head);
 
