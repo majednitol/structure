@@ -44,11 +44,10 @@ struct node *addAtEnd(struct node *head, int data)
     while (tp->next != NULL)
     {
         tp = tp->next;
-        tp->next = temp;
-        temp->prev = tp;
-        return head;
     }
-    
+    tp->next = temp;
+    temp->prev = tp;
+    return head;
 }
 struct node *addAfterPos(struct node *head, int data, int pos)
 {
@@ -69,7 +68,7 @@ struct node *addAfterPos(struct node *head, int data, int pos)
     }
     else
     {
-        temp2 = temp->next;
+      
         temp->next = newp;
         temp2->prev = newp;
         newp->next = temp2;
@@ -108,7 +107,6 @@ void print(struct node *head)
         printf(" %d ->", ptr->data);
         ptr = ptr->next;
     }
-    
 }
 int main()
 {
