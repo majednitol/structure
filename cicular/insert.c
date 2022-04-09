@@ -5,7 +5,7 @@ struct node
     int data;
     struct node *next;
 };
-// creating head that means 1st node
+// creating head that means 1st node,
 struct node *addtoempty(int data)
 {
     struct node *temp = malloc(sizeof(struct node));
@@ -33,9 +33,9 @@ struct node *addNodeAtEnd(struct node *tail, int data)
     return tail;
 }
 
-struct node *addAfterPos(struct node *tail, int data, int pos)
+struct node *addPos(struct node *tail, int data, int pos)
 {
-    struct node *p = tail->next;
+    struct node *p = tail;
     struct node *new = (struct node *)malloc(sizeof(struct node));
     new->data = data;
     new->next = NULL;
@@ -74,6 +74,40 @@ struct node *createlist(struct node *tail)
     }
     return tail;
 }
+
+void countNode(struct node *tail)
+{
+    struct node *temp = tail->next;
+    int count = 0;
+    while (temp != tail)
+    {
+        count++;
+        temp = temp->next;
+    }
+    count++;
+    printf("there are %d nodes in the list\n", count);
+}
+
+int searchElement(struct node *tail, int element)
+{
+    struct node *temp = tail->next;
+    int index = 0;
+    if (tail == NULL)
+    {
+        return -2;
+    }
+
+    while (temp != tail)
+    {
+        if (temp->data == element)
+
+            return index;
+
+        temp = temp->next;
+        index++;
+    }
+    return -1;
+}
 void print(struct node *tail)
 {
     struct node *p = tail->next;
@@ -89,12 +123,15 @@ int main()
     struct node *tail;
     tail = addtoempty(45);
 
-    // tail = addNodeBegining(tail, 34);
-    // tail = addNodeBegining(tail, 384);
-    // tail = addNodeAtEnd(tail, 340);
-    // tail = addNodeAtEnd(tail, 348);
-    // tail = addAfterPos(tail, 38, 4);
-    tail = createlist(tail);
+    tail = addNodeBegining(tail, 34);
+    tail = addNodeBegining(tail, 384);
+    tail = addNodeAtEnd(tail, 340);
+    tail = addNodeAtEnd(tail, 348);
+    tail = addPos(tail, 38, 6);
+    // tail = createlist(tail);
 
     print(tail);
+    countNode(tail);
+    int index = searchElement(tail, 34);
+    printf("node  found in list: %d\n", index);
 }

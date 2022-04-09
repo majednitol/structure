@@ -144,7 +144,6 @@ struct node *delInter(struct node *head, int position)
     {
         temp2 = temp->prev;
         temp2->next = temp->next;
-        temp->next->prev = temp2;
         free(temp);
         temp = NULL;
     }
@@ -171,7 +170,7 @@ int main()
     printf("\nafter deletion \n");
     // head = delFirst(head);
     // head = delLast(head);
-    head = delInter(head, 3);
+    head = delInter(head, 2);
     // head = createlist(head);
     print(head);
 
